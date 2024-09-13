@@ -1,0 +1,36 @@
+<%= form_with model: @survey, local: true do |f| %>
+  <div>
+    <%= f.label :first_name, "Imię" %>
+    <%= f.text_field :first_name %>
+  </div>
+
+  <div>
+    <%= f.label :last_name, "Nazwisko" %>
+    <%= f.text_field :last_name %>
+  </div>
+
+  <div>
+    <%= f.label :age, "Wiek" %>
+    <%= f.number_field :age %>
+  </div>
+
+  <div>
+    <%= f.label :height, "Wzrost" %>
+    <%= f.number_field :height %>
+  </div>
+
+  <div>
+    <%= f.label :gender, "Płeć" %>
+    <%= f.select :gender, options_for_select([%w[Mężczyzna Male], %w[Kobieta Female]], @survey.gender) %>
+  </div>
+
+  <div>
+    <%= f.label :favorite_color, "Ulubiony kolor" %>
+    <%= f.text_field :favorite_color %>
+    <%= button_tag "Losuj kolor", id: "random-color" %>
+  </div>
+
+  <div>
+    <%= f.submit "Zapisz" %>
+  </div>
+<% end %>
