@@ -31,3 +31,11 @@
     border-color: #007bff;
 }
 
+.even {
+    background-color: #f9f9f9;
+}
+.odd {
+    background-color: #e0e0e0;
+}
+
+
