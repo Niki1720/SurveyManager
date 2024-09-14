@@ -1,0 +1,32 @@
+<table>
+  <thead>
+  <tr>
+    <th>Imię</th>
+    <th>Nazwisko</th>
+    <th>Wiek</th>
+    <th>Wzrost</th>
+    <th>Płeć</th>
+    <th>Ulubiony kolor</th>
+    <th>Akcje</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% surveys.each_with_index do |survey, index| %>
+    <tr class="<%= index.even? ? 'even' : 'odd' %>">
+      <td><%= survey.first_name %></td>
+      <td><%= survey.last_name %></td>
+      <td><%= survey.age %></td>
+      <td><%= survey.height %></td>
+      <td>
+        <%= { "Male" => "Mężczyzna", "Female" => "Kobieta" }[survey.gender] %>
+      </td>
+      <td><%= survey.favorite_color %></td>
+      <td>
+        <%= link_to 'Pokaż', survey %>
+        <%= link_to 'Edytuj', edit_survey_path(survey) %>
+        <%= button_to "Usuń", survey, method: :delete %>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

@@ -1,32 +1,11 @@
 <h1>Lista ankiet</h1>
+
 <%= link_to 'Dodaj nową ankietę', new_survey_path %>
-<table>
-  <thead>
-  <tr>
-    <th>Imię</th>
-    <th>Nazwisko</th>
-    <th>Wiek</th>
-    <th>Wzrost</th>
-    <th>Płeć</th>
-    <th>Ulubiony kolor</th>
-    <th>Akcje</th>
-  </tr>
-  </thead>
-  <tbody>
-  <% @surveys.each_with_index do |survey, index| %>
-    <tr class="<%= index.even? ? 'even' : 'odd' %>">
-      <td><%= survey.first_name %></td>
-      <td><%= survey.last_name %></td>
-      <td><%= survey.age %></td>
-      <td><%= survey.height %></td>
-      <td><%= survey.gender %></td>
-      <td><%= survey.favorite_color %></td>
-      <td>
-        <%= link_to 'Pokaż', survey %>
-        <%= link_to 'Edytuj', edit_survey_path(survey) %>
-        <%= button_to "Usuń", survey, method: :delete %>
-      </td>
-    </tr>
-  <% end %>
-  </tbody>
-</table>
+
+<turbo-frame id="survey-list" data-controller="survey">
+  <%= render partial: 'survey_list', locals: { surveys: @surveys } %>
+</turbo-frame>
+
+<div data-controller="survey">
+  <%= button_tag "Odśwież listę", type: "button", data: { action: "survey#refresh" }, class: "button" %>
+</div>
