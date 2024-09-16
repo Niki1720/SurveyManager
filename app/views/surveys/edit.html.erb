@@ -1,8 +1,11 @@
-<h1>Edycja ankiety</h1>
+<%= turbo_frame_tag "survey-list" do %>
+  <div class="container">
+    <h1>Edycja ankiety</h1>
+    <%= render 'form', survey: @survey %>
 
-<%= render 'form', survey: @survey %>
-
-<div>
-  <%= link_to "Pokaż ankietę", @survey %> |
-  <%= link_to "Powrót do listy", surveys_path %>
-</div>
+    <div>
+      <%= link_to "Pokaż ankietę", @survey, data: { turbo_frame: "survey-list" } %> |
+      <%= link_to "Powrót do listy", surveys_path, data: { turbo_frame: "survey-list" } %>
+    </div>
+  </div>
+<% end %>

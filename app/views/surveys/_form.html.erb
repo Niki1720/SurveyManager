@@ -1,4 +1,10 @@
-<%= form_with model: @survey, local: true, data: { controller: "survey" } do |f| %>
+<%= form_with model: survey, local: true, data: { controller: "survey" } do |f| %>
+  <%= turbo_frame_tag "form_errors" do %>
+    <% if survey.errors.any? %>
+      <%= render 'form_errors', survey: @survey %>
+    <% end %>
+  <% end %>
+
   <div class="form-group">
     <%= f.label :first_name, "Imię" %>
     <%= f.text_field :first_name, class: "form-control" %>
@@ -21,7 +27,7 @@
 
   <div class="form-group">
     <%= f.label :gender, "Płeć" %>
-    <%= f.select :gender, options_for_select([%w[Mężczyzna Male], %w[Kobieta Female]], @survey.gender), {}, class: "form-control"  %>
+    <%= f.select :gender, options_for_select([%w[Mężczyzna Male], %w[Kobieta Female]], @survey.gender), {}, class: "form-control" %>
   </div>
 
   <div class="form-group">

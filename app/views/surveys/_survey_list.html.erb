@@ -22,9 +22,9 @@
       </td>
       <td><%= survey.favorite_color %></td>
       <td>
-        <%= link_to 'Pokaż', survey %>
-        <%= link_to 'Edytuj', edit_survey_path(survey) %>
-        <%= button_to "Usuń", survey, method: :delete %>
+        <%= link_to "Pokaż ankietę", survey %> |
+        <%= link_to 'Edytuj', edit_survey_path(survey), data: { turbo_frame: "survey-list" } %>
+        <%= button_to "Usuń", survey, method: :delete, data: { turbo_confirm: "Czy na pewno chcesz usunąć tę ankietę?", turbo_frame: "survey-list" } %>
       </td>
     </tr>
   <% end %>

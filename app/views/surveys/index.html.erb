@@ -1,11 +1,9 @@
-<h1>Lista ankiet</h1>
+<%= turbo_frame_tag "survey-list" do %>
+  <div class="container">
+    <%= link_to 'Dodaj nową ankietę', new_survey_path, data: { turbo_frame: "survey-list" }, class: "button" %>
+    <h1>Lista ankiet</h1>
 
-<%= link_to 'Dodaj nową ankietę', new_survey_path %>
-
-<turbo-frame id="survey-list" data-controller="survey">
-  <%= render partial: 'survey_list', locals: { surveys: @surveys } %>
-</turbo-frame>
-
-<div data-controller="survey">
-  <%= button_tag "Odśwież listę", type: "button", data: { action: "survey#refresh" }, class: "button" %>
-</div>
+    <%= render partial: "surveys/survey_list", locals: { surveys: @surveys } %>
+    <%= button_to "Odśwież listę", refresh_surveys_path, method: :get, data: { turbo_frame: "survey-list" } %>
+  </div>
+<% end %>

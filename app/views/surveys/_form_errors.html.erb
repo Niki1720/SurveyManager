@@ -1,0 +1,9 @@
+<div class="error-messages">
+  <button type="button" class="close-alert">X</button>
+  <h2><%= pluralize(survey.errors.count, "error") %> prohibited this survey from being saved:</h2>
+  <ul>
+    <% survey.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+  </ul>
+</div>
